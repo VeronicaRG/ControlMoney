@@ -6,4 +6,5 @@ type FontSize = keyof typeof theme.fontSizes;
 export interface BaseTextProps extends TextProps {
   accessibilityRole?: any;
   size: FontSize;
+  color?: string;
 }
