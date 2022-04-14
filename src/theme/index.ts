@@ -61,4 +61,9 @@ export const theme = {
     b3: 12,
     b4: 12,
   },
+  fonts: {
+    regular: 'Montserrat-Regular',
+    semiBold: 'Montserrat-SemiBold',
+    medium: 'Montserrat-Medium',
+  },
 };
