@@ -10,7 +10,9 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Text>{t('slogan')}</Text>
+      <Text style={{marginTop: 50, fontFamily: 'Montserrat'}}>
+        {t('slogan')}
+      </Text>
     </ThemeProvider>
   );
 };
