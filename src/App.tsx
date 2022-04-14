@@ -5,10 +5,14 @@ import {theme} from './theme';
 
 import StackNavigator from './routes/stack';
 
+import {AuthProvider} from './hooks/auth';
+
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <StackNavigator />
+      <AuthProvider>
+        <StackNavigator />
+      </AuthProvider>
     </ThemeProvider>
   );
 };
