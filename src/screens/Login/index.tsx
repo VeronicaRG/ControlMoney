@@ -1,37 +1,43 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useUserContext} from '../../hooks/auth';
+import {authentication} from '../../Services/authServices';
 import LoginView from './view';
 
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
-  const [apelido, setApelido] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [nickname, setNickname] = useState('');
   const navigation = useNavigation();
-  const {setUser} = useUserContext();
+  const {setUser, user} = useUserContext();
 
-  function signIn(emailUser, apelidoUser) {
-    if (emailUser && apelidoUser) {
-      setUser({
-        apelido: apelidoUser,
-        email: emailUser,
-        status: 'ATIVO',
-      });
-
+  useEffect(() => {
+    if (user?.token) {
       navigation.navigate('Home');
     }
-  }
+  }, [user, navigation]);
 
-  function handleLogin() {
-    signIn(email, apelido);
+  async function signIn() {
+    if (email && nickname) {
+      setLoading(true);
+      const token = await authentication(email);
+      setUser({
+        email: email,
+        nickname: nickname,
+        token: token,
+      });
+      setLoading(false);
+    }
   }
 
   return (
     <LoginView
       valueEmail={email}
       onChangeTextEmail={text => setEmail(text)}
-      valueApelido={apelido}
-      onChangeTextApelido={text => setApelido(text)}
-      onPress={handleLogin}
+      valueNickname={nickname}
+      onChangeTextNickname={text => setNickname(text)}
+      onPress={signIn}
+      loading={loading}
     />
   );
 };

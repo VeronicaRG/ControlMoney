@@ -1,13 +1,24 @@
 import React, {createContext, ReactNode, useContext, useState} from 'react';
 
-export const AuthContext = createContext([]);
-
 interface AuthProvidersProps {
   children: ReactNode;
 }
 
+type AuthContextProps = {
+  setUser: (user: User) => void;
+  user?: User;
+};
+
+type User = {
+  nickname: string;
+  email: string;
+  token: string;
+};
+
+export const AuthContext = createContext<AuthContextProps>({setUser: () => {}});
+
 function AuthProvider({children}: AuthProvidersProps) {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<User>();
 
   return (
     <AuthContext.Provider value={{setUser, user}}>

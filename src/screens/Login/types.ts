@@ -1,7 +1,8 @@
 export interface LoginProps {
-  onPress: any;
-  valueEmail: any;
-  onChangeTextEmail: any;
-  valueApelido: any;
-  onChangeTextApelido: any;
+  onPress: () => void;
+  valueEmail: string;
+  onChangeTextEmail: (text: string) => void;
+  valueNickname: string;
+  onChangeTextNickname: (text: string) => void;
+  loading: boolean;
 }
