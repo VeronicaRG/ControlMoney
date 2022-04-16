@@ -9,7 +9,12 @@ export const theme = {
       _99: '#000',
     },
   },
-  componentSizes: {},
+  componentSizes: {
+    button: {
+      width: 150,
+      height: 40,
+    },
+  },
   spaces: {
     x1: 4,
     x2: 8,

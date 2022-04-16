@@ -1,6 +1,17 @@
 {
   "translation": {
     "slogan": "Control your money, so the money doesn't control you",
-    "button": "Sign up"
+    "button": "Sign up",
+    "Home": {
+      "greeting": "Welcome {{nickname}}",
+      "Button": "Add expense"
+    },
+    "AddExpense": {
+      "title": "Expense",
+      "description": "Description",
+      "data": "Date",
+      "descriptionInput": "Add the expense description",
+      "dataInput": "Today"
+    }
   }
 }

@@ -9,6 +9,8 @@ import LoginScreen from '../screens/Login';
 export type RootStackParamList = {
   Home: undefined;
   Login: undefined;
+  Logged: undefined;
+  AddExpense: undefined;
 };
 
 const StackNavigator: React.FC = () => {
@@ -23,7 +25,7 @@ const StackNavigator: React.FC = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Home"
+          name="Logged"
           component={TabNavigator}
           options={{headerShown: false}}
         />

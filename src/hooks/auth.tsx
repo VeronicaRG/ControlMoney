@@ -1,4 +1,11 @@
-import React, {createContext, ReactNode, useContext, useState} from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import api from '../Services';
 
 interface AuthProvidersProps {
   children: ReactNode;
@@ -18,7 +25,16 @@ type User = {
 export const AuthContext = createContext<AuthContextProps>({setUser: () => {}});
 
 function AuthProvider({children}: AuthProvidersProps) {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User>({
+    email: 'Veronica@gmail.com',
+    nickname: 'Vrg',
+    token:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlZlcm9uaUBnbWFpbC5jb20iLCJpYXQiOjE2NTAwNDY2OTV9.8XxHeAb4nHtXZcgBGtdlj6bPMvD4RL83DyYnzgWTEwc',
+  });
+
+  useEffect(() => {
+    api.defaults.headers.Authorization = `Bearer ${user?.token}`;
+  }, [user]);
 
   return (
     <AuthContext.Provider value={{setUser, user}}>

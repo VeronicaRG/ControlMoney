@@ -13,7 +13,7 @@ const LoginScreen: React.FC = () => {
 
   useEffect(() => {
     if (user?.token) {
-      navigation.navigate('Home');
+      navigation.navigate('Logged');
     }
   }, [user, navigation]);
 
@@ -21,6 +21,7 @@ const LoginScreen: React.FC = () => {
     if (email && nickname) {
       setLoading(true);
       const token = await authentication(email);
+
       setUser({
         email: email,
         nickname: nickname,

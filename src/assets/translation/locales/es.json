@@ -1,6 +1,17 @@
 {
   "translation": {
     "slogan": "Controle su dinero para que el dinero no lo controle",
-    "button": "Inscribirse"
+    "button": "Inscribirse",
+    "Home": {
+      "greeting": "Bienvenido",
+      "Button": "Adicionar gasto"
+    },
+    "AddExpense": {
+      "title": "Gasto",
+      "data": "Fecha",
+      "description": "Descripción",
+      "descriptionInput": "Adicione la descripción del gasto",
+      "dataInput": "Hoy"
+    }
   }
 }
