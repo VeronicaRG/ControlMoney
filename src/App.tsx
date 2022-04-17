@@ -1,4 +1,5 @@
 import './assets/translation/i18next';
+import './config/reactotron';
 import React from 'react';
 import {ThemeProvider} from 'styled-components/native';
 import {theme} from './theme';
