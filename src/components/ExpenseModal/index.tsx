@@ -23,6 +23,7 @@ const ExpenseModal: React.FC = () => {
   const modalizeRef = useRef<Modalize>(null);
   const {selectedExpense, setSelectedExpense} = useExpenseContext();
   const {t} = useTranslation();
+  const {setExpenses} = useExpenseContext();
 
   const onOpen = () => {
     modalizeRef.current?.open();
@@ -33,19 +34,20 @@ const ExpenseModal: React.FC = () => {
   }
 
   async function deleteOnExpense() {
-    const expense = await deleteExpense(selectedExpense!);
-    setExpenseOn(expense);
+    await deleteExpense(selectedExpense!);
+    setExpenses(actual => actual.filter(item => item._id !== selectedExpense));
+    modalizeRef.current?.close();
   }
+
   const alertDeleteExpense = () =>
     Alert.alert(t('ExpenseModal.Alert'), t('ExpenseModal.AlertMessage'), [
       {
         text: t('ExpenseModal.AlertCancel'),
-        onPress: () => console.log('Cancel Pressed'),
         style: 'cancel',
       },
       {
         text: t('ExpenseModal.AlertYes'),
-        onPress: () => console.log('OK Pressed'),
+        onPress: deleteOnExpense,
       },
     ]);
 
@@ -73,12 +75,7 @@ const ExpenseModal: React.FC = () => {
               }}>
               <BaseText size="h3">✏️</BaseText>
             </Edit>
-            <Delete
-              onPress={() => {
-                deleteOnExpense();
-                alertDeleteExpense();
-                // modalizeRef.current?.close();
-              }}>
+            <Delete onPress={() => alertDeleteExpense()}>
               <BaseText size="h3">🗑️</BaseText>
             </Delete>
           </Options2>

@@ -9,6 +9,9 @@ import StackNavigator from './routes/stack';
 import {AuthProvider} from './hooks/auth';
 import ExpenseModal from './components/ExpenseModal';
 import {ExpenseProvider} from './hooks/expenseContext';
+import {LogBox} from 'react-native';
+
+LogBox.ignoreAllLogs();
 
 const App: React.FC = () => {
   return (

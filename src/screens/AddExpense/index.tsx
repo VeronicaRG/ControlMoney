@@ -1,5 +1,7 @@
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import React, {useState} from 'react';
+import {Expense} from '../../@types/expense';
+import {useExpenseContext} from '../../hooks/expenseContext';
 import {RootStackParamList} from '../../routes/stack';
 import {createExpense, editExpense} from '../../Services/expensesServices';
 import AddExpenseView from './view';
@@ -14,22 +16,9 @@ const AddExpenseScreen: React.FC = () => {
   const [amount, setAmount] = useState<number>(params?.expense?.value || 0);
   const isEditing = !!params?.expense;
   const navigation = useNavigation();
+  const {setExpenses} = useExpenseContext();
 
-  async function addExpense() {
-    if (date && amount && description) {
-      const expense = {
-        date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
-        item: description,
-        value: amount,
-        additionalInfo: {},
-      };
-      // const expenseId = await createExpense(expense);
-      await createExpense(expense);
-    }
-    navigation.navigate('Home');
-  }
-
-  async function saveExpense() {
+  async function handleExpense() {
     if (date && amount && description) {
       const expense = {
         date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
@@ -37,9 +26,32 @@ const AddExpenseScreen: React.FC = () => {
         value: amount,
         additionalInfo: params?.expense.additionalInfo || {},
       };
-      await editExpense(params?.expense._id!, expense);
+      if (isEditing) {
+        await saveExpense(expense);
+      } else {
+        await addExpense(expense);
+      }
+      navigation.navigate('Home');
     }
-    navigation.navigate('Home');
+  }
+
+  async function addExpense(_expense: Expense) {
+    const expenseId = await createExpense(_expense);
+    setExpenses(actual => [
+      ...actual,
+      {..._expense, _id: expenseId, date: date.toISOString()},
+    ]);
+  }
+
+  async function saveExpense(_expense: Expense) {
+    await editExpense(params?.expense._id!, _expense);
+    setExpenses(actual =>
+      actual.map(item =>
+        item._id === params?.expense._id
+          ? {...item, ..._expense, date: date.toISOString()}
+          : item,
+      ),
+    );
   }
 
   return (
@@ -58,7 +70,7 @@ const AddExpenseScreen: React.FC = () => {
       cancel={() => {
         setOpenModal(false);
       }}
-      action={isEditing ? saveExpense : addExpense}
+      action={handleExpense}
       isEditing={isEditing}
     />
   );

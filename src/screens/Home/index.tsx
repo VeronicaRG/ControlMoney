@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useEffect} from 'react';
+import {useExpenseContext} from '../../hooks/expenseContext';
 import {listExpenses} from '../../Services/expensesServices';
 import HomeView from './view';
 
 const HomeScreen: React.FC = ({}) => {
-  const [expenses, setExpenses] = useState([]);
+  const {expenses, setExpenses} = useExpenseContext();
 
   async function getExpenses() {
     const list = await listExpenses(1, 20);

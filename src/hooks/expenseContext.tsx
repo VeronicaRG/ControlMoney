@@ -1,4 +1,5 @@
 import React, {createContext, ReactNode, useContext, useState} from 'react';
+import {Expense} from '../@types/expense';
 
 interface ExpenseProvidersProps {
   children: ReactNode;
@@ -7,17 +8,28 @@ interface ExpenseProvidersProps {
 type ExpenseContextProps = {
   selectedExpense?: string;
   setSelectedExpense: React.Dispatch<React.SetStateAction<string>>;
+  expenses: Expense[];
+  setExpenses: React.Dispatch<React.SetStateAction<Expense[]>>;
 };
 
 export const ExpenseContext = createContext<ExpenseContextProps>({
   setSelectedExpense: () => {},
+  setExpenses: () => {},
+  expenses: [],
 });
 
 function ExpenseProvider({children}: ExpenseProvidersProps) {
   const [selectedExpense, setSelectedExpense] = useState('');
+  const [expenses, setExpenses] = useState<Expense[]>([]);
 
   return (
-    <ExpenseContext.Provider value={{selectedExpense, setSelectedExpense}}>
+    <ExpenseContext.Provider
+      value={{
+        selectedExpense,
+        setSelectedExpense,
+        expenses,
+        setExpenses: setExpenses,
+      }}>
       {children}
     </ExpenseContext.Provider>
   );

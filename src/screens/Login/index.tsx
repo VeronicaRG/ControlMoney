@@ -13,7 +13,10 @@ const LoginScreen: React.FC = () => {
 
   useEffect(() => {
     if (user?.token) {
-      navigation.navigate('Logged');
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'Logged'}],
+      });
     }
   }, [user, navigation]);
 
