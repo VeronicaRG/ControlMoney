@@ -5,6 +5,7 @@ import CurrencyInput from 'react-native-currency-input';
 import DatePicker from 'react-native-date-picker';
 import BaseText from '../../components/BaseText';
 import {theme} from '../../theme';
+import {formatDate} from '../../utils/date';
 import {
   AddExpense,
   Amount,
@@ -27,7 +28,8 @@ const AddExpenseView: React.FC<AddExpenseProps> = ({
   date,
   confirm,
   cancel,
-  addExpense,
+  action,
+  isEditing,
 }) => {
   const {t} = useTranslation();
 
@@ -67,9 +69,7 @@ const AddExpenseView: React.FC<AddExpenseProps> = ({
         <ViewData onPress={onPressViewData}>
           <Symbol />
           <DataTextInput>
-            <BaseText size="h5">
-              {`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
-            </BaseText>
+            <BaseText size="h5">{formatDate(date)}</BaseText>
           </DataTextInput>
         </ViewData>
         <DatePicker
@@ -81,8 +81,8 @@ const AddExpenseView: React.FC<AddExpenseProps> = ({
           onCancel={cancel}
         />
       </View>
-      <AddExpense onPress={addExpense}>
-        <BaseText size="h1">+</BaseText>
+      <AddExpense onPress={action}>
+        <BaseText size="h1">{isEditing ? '✏️' : '+'}</BaseText>
       </AddExpense>
     </Container>
   );

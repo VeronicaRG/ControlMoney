@@ -1,12 +1,19 @@
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {createExpenses} from '../../Services/expensesServices';
+import {RootStackParamList} from '../../routes/stack';
+import {createExpense, editExpense} from '../../Services/expensesServices';
 import AddExpenseView from './view';
 
 const AddExpenseScreen: React.FC = () => {
-  const [date, setDate] = useState(new Date());
+  const {params} = useRoute<RouteProp<RootStackParamList, 'AddExpense'>>();
+  const [date, setDate] = useState(
+    params?.expense?.date ? new Date(params?.expense?.date) : new Date(),
+  );
   const [openModal, setOpenModal] = useState(false);
-  const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState<number>(0);
+  const [description, setDescription] = useState(params?.expense?.item || '');
+  const [amount, setAmount] = useState<number>(params?.expense?.value || 0);
+  const isEditing = !!params?.expense;
+  const navigation = useNavigation();
 
   async function addExpense() {
     if (date && amount && description) {
@@ -16,9 +23,23 @@ const AddExpenseScreen: React.FC = () => {
         value: amount,
         additionalInfo: {},
       };
-      // const expenseId = await createExpenses(expense);
-      await createExpenses(expense);
+      // const expenseId = await createExpense(expense);
+      await createExpense(expense);
     }
+    navigation.navigate('Home');
+  }
+
+  async function saveExpense() {
+    if (date && amount && description) {
+      const expense = {
+        date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+        item: description,
+        value: amount,
+        additionalInfo: params?.expense.additionalInfo || {},
+      };
+      await editExpense(params?.expense._id!, expense);
+    }
+    navigation.navigate('Home');
   }
 
   return (
@@ -37,7 +58,8 @@ const AddExpenseScreen: React.FC = () => {
       cancel={() => {
         setOpenModal(false);
       }}
-      addExpense={addExpense}
+      action={isEditing ? saveExpense : addExpense}
+      isEditing={isEditing}
     />
   );
 };

@@ -8,5 +8,6 @@ export interface AddExpenseProps {
   date: Date;
   confirm: (date: Date) => void;
   cancel: () => void;
-  addExpense: () => void;
+  action: () => void;
+  isEditing: boolean;
 }
