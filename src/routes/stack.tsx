@@ -7,6 +7,7 @@ import TabNavigator from './tab';
 import LoginScreen from '../screens/Login';
 import {Expense} from '../@types/expense';
 import AddExpenseScreen from '../screens/AddExpense';
+import {navigationRef} from './rootNavigation';
 
 type AddExpenseProps = {
   expense: Expense;
@@ -23,7 +24,7 @@ const StackNavigator: React.FC = () => {
   const Stack = createStackNavigator<RootStackParamList>();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
         <Stack.Screen
           name="Login"

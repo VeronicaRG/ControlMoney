@@ -3,6 +3,7 @@ import React from 'react';
 import {Expense} from '../../@types/expense';
 
 import BaseText from '../../components/BaseText';
+import {useExpenseContext} from '../../hooks/expenseContext';
 import {formatDate} from '../../utils/date';
 
 import {Amount, Container, InfoView, LeftArrow, Symbol} from './styles';
@@ -10,8 +11,14 @@ import {Amount, Container, InfoView, LeftArrow, Symbol} from './styles';
 const ExpenseComponent: React.FC<Expense> = props => {
   const {item, date, value} = props;
   const navigation = useNavigation();
+  const {setSelectedExpense} = useExpenseContext();
+
+  function onPressExpense() {
+    setSelectedExpense(props._id!);
+  }
+
   return (
-    <Container>
+    <Container onPress={onPressExpense}>
       <Symbol>
         <BaseText size="h3">💵</BaseText>
       </Symbol>

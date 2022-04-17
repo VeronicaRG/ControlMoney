@@ -14,3 +14,8 @@ export async function editExpense(id: string, expense: Expense) {
   const response = await api.put(`/expenses/${id}`, expense);
   return response;
 }
+
+export async function getExpense(id: string) {
+  const response = await api.get(`/expenses/${id}`);
+  return response.data;
+}

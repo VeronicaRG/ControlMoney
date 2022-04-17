@@ -6,12 +6,17 @@ import {theme} from './theme';
 import StackNavigator from './routes/stack';
 
 import {AuthProvider} from './hooks/auth';
+import ExpenseModal from './components/ExpenseModal';
+import {ExpenseProvider} from './hooks/expenseContext';
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
-        <StackNavigator />
+        <ExpenseProvider>
+          <StackNavigator />
+          <ExpenseModal />
+        </ExpenseProvider>
       </AuthProvider>
     </ThemeProvider>
   );
