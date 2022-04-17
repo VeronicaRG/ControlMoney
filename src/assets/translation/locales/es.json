@@ -12,6 +12,12 @@
       "description": "Descripción",
       "descriptionInput": "Adicione la descripción del gasto",
       "dataInput": "Hoy"
+    },
+    "ExpenseModal": {
+      "Alert": "Alerta",
+      "AlertMessage": "¿Está seguro de que quiere eliminar este gasto?",
+      "AlertCancel": "Cancelar",
+      "AlertYes": "Si"
     }
   }
 }

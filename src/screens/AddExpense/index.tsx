@@ -18,7 +18,7 @@ const AddExpenseScreen: React.FC = () => {
   async function addExpense() {
     if (date && amount && description) {
       const expense = {
-        date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+        date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
         item: description,
         value: amount,
         additionalInfo: {},
@@ -32,7 +32,7 @@ const AddExpenseScreen: React.FC = () => {
   async function saveExpense() {
     if (date && amount && description) {
       const expense = {
-        date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+        date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
         item: description,
         value: amount,
         additionalInfo: params?.expense.additionalInfo || {},

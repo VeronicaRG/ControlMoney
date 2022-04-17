@@ -19,3 +19,7 @@ export async function getExpense(id: string) {
   const response = await api.get(`/expenses/${id}`);
   return response.data;
 }
+export async function deleteExpense(id: string) {
+  const response = await api.delete(`/expenses/${id}`);
+  return response.data;
+}

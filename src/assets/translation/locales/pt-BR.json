@@ -12,6 +12,12 @@
       "data": "Data",
       "descriptionInput": "Adicione a descripção da despesa",
       "dataInput": "Hoje"
+    },
+    "ExpenseModal": {
+      "Alert": "Alerta",
+      "AlertMessage": "Tem certeza de que quer deletar esta despesa?",
+      "AlertCancel": "Cancelar",
+      "AlertYes": "Sim"
     }
   }
 }

@@ -11,6 +11,9 @@ export const Options = styled.View`
   justify-content: space-between;
   padding: ${({theme}) => theme.spaces.x4}px;
 `;
+export const Options2 = styled.View`
+  flex-direction: row;
+`;
 
 export const Edit = styled.TouchableOpacity`
   width: 35px;
@@ -20,9 +23,20 @@ export const Edit = styled.TouchableOpacity`
 
   background-color: ${({theme}) => theme.colors.primary};
   border-radius: ${({theme}) => theme.radius.x10}px;
+  margin-right: ${({theme}) => theme.spaces.x4}px;
 `;
 
 export const Delete = styled.TouchableOpacity`
+  width: 35px;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+
+  background-color: ${({theme}) => theme.colors.primary};
+  border-radius: ${({theme}) => theme.radius.x10}px;
+`;
+
+export const Close = styled.TouchableOpacity`
   width: 35px;
   height: 35px;
   justify-content: center;
