@@ -5,13 +5,16 @@ import {useUserContext} from '../../hooks/auth';
 import {authentication} from '../../Services/authServices';
 import LoginView from './view';
 
+import * as yup from 'yup';
+import {Alert} from 'react-native';
+
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [nickname, setNickname] = useState('');
   const navigation = useNavigation();
   const {setUser, user} = useUserContext();
-  const {i18n} = useTranslation();
+  const {i18n, t} = useTranslation();
 
   function changeCurrentLanguage() {
     if (i18n.language === 'en') {
@@ -32,7 +35,16 @@ const LoginScreen: React.FC = () => {
   }, [user, navigation]);
 
   async function signIn() {
-    if (email && nickname) {
+    try {
+      let userSchema = yup.object({
+        nickname: yup.string().required(t('Login.errors.nickname.required')),
+        email: yup
+          .string()
+          .email(t('Login.errors.email.valid'))
+          .required(t('Login.errors.email.required')),
+      });
+      await userSchema.validate({email, nickname}, {abortEarly: false});
+
       setLoading(true);
       const token = await authentication(email);
 
@@ -41,6 +53,15 @@ const LoginScreen: React.FC = () => {
         nickname: nickname,
         token: token,
       });
+      setLoading(false);
+    } catch (e) {
+      if (e instanceof yup.ValidationError) {
+        e?.errors.forEach(error => {
+          Alert.alert('Error', error);
+        });
+      } else {
+        Alert.alert('Error', t('General.error'));
+      }
       setLoading(false);
     }
   }

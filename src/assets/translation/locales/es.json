@@ -23,11 +23,23 @@
     "Language": "🇨🇴",
     "Login": {
       "email": "Digite su email",
-      "nickname": "Digite su sobrenombre"
+      "nickname": "Digite su sobrenombre",
+      "errors": {
+        "nickname": {
+          "required": "El sobrenombre es obligatorio"
+        },
+        "email": {
+          "required": "El email es obligatorio",
+          "valid": "El email necessita ser valido"
+        }
+      }
     },
     "Expense": {
       "Currency": "COP",
       "CurrencyName": "es-COL"
+    },
+    "General": {
+      "error": "Algo salio mal, intente nuevamente más tarde"
     }
   }
 }

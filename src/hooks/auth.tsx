@@ -22,18 +22,22 @@ type User = {
   token: string;
 };
 
+// {
+//   // email: 'Veronica@gmail.com',
+//   // nickname: 'Vrg',
+//   // token:
+//   //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlZlcm9uaUBnbWFpbC5jb20iLCJpYXQiOjE2NTAwNDY2OTV9.8XxHeAb4nHtXZcgBGtdlj6bPMvD4RL83DyYnzgWTEwc',
+// }
+
 export const AuthContext = createContext<AuthContextProps>({setUser: () => {}});
 
 function AuthProvider({children}: AuthProvidersProps) {
-  const [user, setUser] = useState<User>({
-    email: 'Veronica@gmail.com',
-    nickname: 'Vrg',
-    token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlZlcm9uaUBnbWFpbC5jb20iLCJpYXQiOjE2NTAwNDY2OTV9.8XxHeAb4nHtXZcgBGtdlj6bPMvD4RL83DyYnzgWTEwc',
-  });
+  const [user, setUser] = useState<User>();
 
   useEffect(() => {
-    api.defaults.headers.Authorization = `Bearer ${user?.token}`;
+    api.defaults.headers.Authorization = user?.token
+      ? `Bearer ${user?.token}`
+      : undefined;
   }, [user]);
 
   return (

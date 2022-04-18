@@ -23,11 +23,23 @@
     "Language": "🇺🇸",
     "Login": {
       "email": "Enter your email",
-      "nickname": "Enter your nickname"
+      "nickname": "Enter your nickname",
+      "errors": {
+        "nickname": {
+          "required": "The nickname is required"
+        },
+        "email": {
+          "required": "The email is required",
+          "valid": "Have to be a valid email"
+        }
+      }
     },
     "Expense": {
       "Currency": "USD",
       "CurrencyName": "en-US"
+    },
+    "General": {
+      "error": "Something went wrong, try again in few minutes"
     }
   }
 }

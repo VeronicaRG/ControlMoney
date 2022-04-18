@@ -3,7 +3,16 @@
     "Language": "🇧🇷",
     "Login": {
       "email": "Digite seu email",
-      "nickname": "Digite seu apelido"
+      "nickname": "Digite seu apelido",
+      "errors": {
+        "nickname": {
+          "required": "O apelido é obrigatório"
+        },
+        "email": {
+          "required": "O email é obrigatorio",
+          "valid": "O email precisa ser valido"
+        }
+      }
     },
     "button": "Inscrevase",
     "Home": {
@@ -28,6 +37,9 @@
       "AlertMessage": "Tem certeza de que quer eliminar esta despesa?",
       "AlertYes": "Sim"
     },
-    "slogan": "Controle sue dinheiro para que o dinheiro não controle você"
+    "slogan": "Controle sue dinheiro para que o dinheiro não controle você",
+    "General": {
+      "error": "Algo deu errado, tente novamente mais tarde"
+    }
   }
 }

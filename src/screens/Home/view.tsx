@@ -52,6 +52,7 @@ const HomeView: React.FC<HomeProps> = ({expenses}) => {
       <FlatList
         data={expenses}
         keyExtractor={item => item._id!}
+        contentContainerStyle={{paddingBottom: 120}}
         renderItem={({item}) => <Expense key={item._id!} {...item} />}
       />
       <AddExpense
