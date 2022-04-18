@@ -22,7 +22,7 @@ import {
 } from './styles';
 import {HomeProps} from './type';
 
-const HomeView: React.FC<HomeProps> = ({expenses}) => {
+const HomeView: React.FC<HomeProps> = ({expenses, onEndReached}) => {
   const {user} = useUserContext();
   const {t} = useTranslation();
   const navigation = useNavigation();
@@ -51,6 +51,7 @@ const HomeView: React.FC<HomeProps> = ({expenses}) => {
 
       <FlatList
         data={expenses}
+        onEndReached={onEndReached}
         keyExtractor={item => item._id!}
         contentContainerStyle={{paddingBottom: 120}}
         renderItem={({item}) => <Expense key={item._id!} {...item} />}

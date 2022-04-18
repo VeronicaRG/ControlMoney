@@ -16,7 +16,7 @@ const AddExpenseScreen: React.FC = () => {
   const [amount, setAmount] = useState<number>(params?.expense?.value || 0);
   const isEditing = !!params?.expense;
   const navigation = useNavigation();
-  const {setExpenses} = useExpenseContext();
+  const {expenses, setExpenses} = useExpenseContext();
 
   async function handleExpense() {
     if (date && amount && description) {
@@ -37,16 +37,16 @@ const AddExpenseScreen: React.FC = () => {
 
   async function addExpense(_expense: Expense) {
     const expenseId = await createExpense(_expense);
-    setExpenses(actual => [
-      ...actual,
+    setExpenses([
+      ...expenses,
       {..._expense, _id: expenseId, date: date.toISOString()},
     ]);
   }
 
   async function saveExpense(_expense: Expense) {
     await editExpense(params?.expense._id!, _expense);
-    setExpenses(actual =>
-      actual.map(item =>
+    setExpenses(
+      expenses.map(item =>
         item._id === params?.expense._id
           ? {...item, ..._expense, date: date.toISOString()}
           : item,
