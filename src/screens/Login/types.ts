@@ -5,4 +5,5 @@ export interface LoginProps {
   valueNickname: string;
   onChangeTextNickname: (text: string) => void;
   loading: boolean;
+  changeLanguage: () => void;
 }
