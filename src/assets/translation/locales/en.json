@@ -49,6 +49,11 @@
     },
     "General": {
       "error": "Something went wrong, try again in few minutes"
+    },
+    "Settings": {
+      "Logout": "Logout",
+      "Language": "English 🇺🇸",
+      "ChangeLanguage": "Press to change"
     }
   }
 }

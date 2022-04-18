@@ -85,7 +85,7 @@ const ExpenseModal: React.FC = () => {
                 navigate('AddExpense', {expense: expenseOn});
                 modalizeRef.current?.close();
               }}>
-              <IconEdit source={require('../../assets/images/edit.png')} />
+              <IconEdit source={require('../../assets/images/editGrey.png')} />
             </Edit>
             <Delete onPress={() => alertDeleteExpense()}>
               <IconDelete source={require('../../assets/images/delete.png')} />

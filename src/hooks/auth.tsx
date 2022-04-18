@@ -22,13 +22,6 @@ type User = {
   token: string;
 };
 
-// {
-//   // email: 'Veronica@gmail.com',
-//   // nickname: 'Vrg',
-//   // token:
-//   //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlZlcm9uaUBnbWFpbC5jb20iLCJpYXQiOjE2NTAwNDY2OTV9.8XxHeAb4nHtXZcgBGtdlj6bPMvD4RL83DyYnzgWTEwc',
-// }
-
 export const AuthContext = createContext<AuthContextProps>({setUser: () => {}});
 
 function AuthProvider({children}: AuthProvidersProps) {

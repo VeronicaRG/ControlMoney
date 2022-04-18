@@ -1,34 +1,5 @@
 {
   "translation": {
-    "slogan": "Controle su dinero para que el dinero no lo controle",
-    "button": "Inscribirse",
-    "Home": {
-      "greeting": "Bienvenido",
-      "Button": "Adicionar gasto",
-      "expenses": "Gastos"
-    },
-    "AddExpense": {
-      "title": "Gasto",
-      "data": "Fecha",
-      "description": "Descripción",
-      "descriptionInput": "Adicione la descripción del gasto",
-      "dataInput": "Hoy",
-      "errors": {
-        "value": {
-          "moreThan": "El valor tiene que ser mayor que COP 0,00",
-          "required": "El valor es obligatorio"
-        },
-        "item": {
-          "required": "La descripción es obligatoria"
-        }
-      }
-    },
-    "ExpenseModal": {
-      "Alert": "Alerta",
-      "AlertMessage": "¿Está seguro de que quiere eliminar este gasto?",
-      "AlertCancel": "Cancelar",
-      "AlertYes": "Si"
-    },
     "Language": "🇨🇴",
     "Login": {
       "email": "Digite su email",
@@ -42,13 +13,48 @@
           "valid": "El email necessita ser valido"
         }
       }
-    },
-    "Expense": {
-      "Currency": "COP",
-      "CurrencyName": "es-CO"
-    },
-    "General": {
-      "error": "Algo salio mal, intente nuevamente más tarde"
-    }
+    },  
+      "button": "Inscribirse",
+      "Home": {
+        "greeting": "Bienvenido",
+        "Button": "Adicionar gasto",
+        "expenses": "Gastos"
+      },
+      "Expense": {
+        "Currency": "COP",
+        "CurrencyName": "es-CO"
+      },
+      "AddExpense": {
+        "title": "Gasto",
+        "data": "Fecha",
+        "description": "Descripción",
+        "descriptionInput": "Adicione la descripción del gasto",
+        "dataInput": "Hoy",
+        "errors": {
+          "value": {
+            "moreThan": "El valor tiene que ser mayor que COP 0,00",
+            "required": "El valor es obligatorio"
+          },
+          "item": {
+            "required": "La descripción es obligatoria"
+          }
+        }
+      },
+      "ExpenseModal": {
+        "Alert": "Alerta",
+        "AlertMessage": "¿Está seguro de que quiere eliminar este gasto?",
+        "AlertCancel": "Cancelar",
+        "AlertYes": "Si"
+      },
+      "slogan": "Controle su dinero para que el dinero no lo controle",
+      "General": {
+        "error": "Algo salio mal, intente nuevamente más tarde"
+      },
+      "Settings": {
+        "Logout": "Salir",
+        "Language": "Español 🇨🇴",
+        "ChangeLanguage": "Presione para cambiar"}
+    }    
   }
-}
+  
+

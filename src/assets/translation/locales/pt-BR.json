@@ -49,6 +49,11 @@
     "slogan": "Controle sue dinheiro para que o dinheiro não controle você",
     "General": {
       "error": "Algo deu errado, tente novamente mais tarde"
+    },
+    "Settings": {
+      "Logout": "Sair",
+      "Language": "Português 🇧🇷",
+      "ChangeLanguage": "Pressione para mudar"
     }
   }
 }
