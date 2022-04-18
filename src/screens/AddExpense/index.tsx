@@ -5,6 +5,9 @@ import {useExpenseContext} from '../../hooks/expenseContext';
 import {RootStackParamList} from '../../routes/stack';
 import {createExpense, editExpense} from '../../Services/expensesServices';
 import AddExpenseView from './view';
+import * as yup from 'yup';
+import {useTranslation} from 'react-i18next';
+import {Alert} from 'react-native';
 
 const AddExpenseScreen: React.FC = () => {
   const {params} = useRoute<RouteProp<RootStackParamList, 'AddExpense'>>();
@@ -17,21 +20,42 @@ const AddExpenseScreen: React.FC = () => {
   const isEditing = !!params?.expense;
   const navigation = useNavigation();
   const {expenses, setExpenses} = useExpenseContext();
+  const {t} = useTranslation();
 
   async function handleExpense() {
-    if (date && amount && description) {
+    try {
+      let expenseSchema = yup.object({
+        value: yup
+          .number()
+          .required(t('AddExpense.errors.value.required'))
+          .moreThan(0, t('AddExpense.errors.value.moreThan')),
+        item: yup.string().required(t('AddExpense.errors.item.required')),
+      });
+
       const expense = {
         date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
         item: description,
         value: amount,
         additionalInfo: params?.expense.additionalInfo || {},
       };
+
+      await expenseSchema.validate(expense, {abortEarly: false});
+
       if (isEditing) {
         await saveExpense(expense);
       } else {
         await addExpense(expense);
       }
+
       navigation.navigate('Home');
+    } catch (e) {
+      if (e instanceof yup.ValidationError) {
+        e?.errors.forEach(error => {
+          Alert.alert('Error', error);
+        });
+      } else {
+        Alert.alert('Error', t('General.error'));
+      }
     }
   }
 

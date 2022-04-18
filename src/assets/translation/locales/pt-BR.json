@@ -29,7 +29,16 @@
       "description": "Descrição",
       "data": "Data",
       "dataInput": "Hoje",
-      "descriptionInput": "Adicione a descrição da despesa"
+      "descriptionInput": "Adicione a descrição da despesa",
+      "errors": {
+        "value": {
+          "moreThan": "O valor precisa ser maior do que R$ 0,00",
+          "required": "O valor é obrigatório"
+        },
+        "item": {
+          "required": "A descrição é obrigatória"
+        }
+      }
     },
     "ExpenseModal": {
       "Alert": "Alerta",

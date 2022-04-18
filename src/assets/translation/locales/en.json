@@ -12,7 +12,16 @@
       "description": "Description",
       "data": "Date",
       "descriptionInput": "Add the expense description",
-      "dataInput": "Today"
+      "dataInput": "Today",
+      "errors": {
+        "value": {
+          "moreThan": "The value have to be more than $ 0,00",
+          "required": "The value is required"
+        },
+        "item": {
+          "required": "The description is required"
+        }
+      }
     },
     "ExpenseModal": {
       "Alert": "Alert",

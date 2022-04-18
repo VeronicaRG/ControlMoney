@@ -24,7 +24,6 @@ function ExpenseProvider({children}: ExpenseProvidersProps) {
 
   const _setExpenses = (data?: Expense[]) => {
     const uniqueIds = new Set();
-    console.log(data);
     let filteredData = data?.filter((element: Expense) => {
       const isDuplicate = uniqueIds.has(element._id);
 

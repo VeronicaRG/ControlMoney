@@ -12,7 +12,16 @@
       "data": "Fecha",
       "description": "Descripción",
       "descriptionInput": "Adicione la descripción del gasto",
-      "dataInput": "Hoy"
+      "dataInput": "Hoy",
+      "errors": {
+        "value": {
+          "moreThan": "El valor tiene que ser mayor que COP 0,00",
+          "required": "El valor es obligatorio"
+        },
+        "item": {
+          "required": "La descripción es obligatoria"
+        }
+      }
     },
     "ExpenseModal": {
       "Alert": "Alerta",
