@@ -42,11 +42,8 @@ const AddExpenseView: React.FC<AddExpenseProps> = ({
 
   return (
     <Container>
-      <ViewGoBack
-        onPress={() => {
-          goBack;
-        }}>
-        <GoBack>
+      <ViewGoBack>
+        <GoBack onPress={goBack}>
           <IconArrowRight
             source={require('../../assets/images/arrowRight.png')}
           />
