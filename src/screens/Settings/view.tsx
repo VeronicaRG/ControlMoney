@@ -14,11 +14,8 @@ const SettingsView: React.FC<SettingsProps> = ({
 
   return (
     <Container>
-      <ViewGoBack
-        onPress={() => {
-          goback;
-        }}>
-        <GoBack>
+      <ViewGoBack>
+        <GoBack onPress={goback}>
           <IconArrowRight
             source={require('../../assets/images/arrowRight.png')}
           />
@@ -33,10 +30,7 @@ const SettingsView: React.FC<SettingsProps> = ({
           {t('Settings.ChangeLanguage')}
         </BaseText>
       </Option>
-      <Option
-        onPress={() => {
-          Logout;
-        }}>
+      <Option onPress={Logout}>
         <BaseText size="h4" color={theme.colors.neutral._99}>
           {t('Settings.Logout')}
         </BaseText>

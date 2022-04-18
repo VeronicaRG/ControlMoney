@@ -12,7 +12,7 @@ interface AuthProvidersProps {
 }
 
 type AuthContextProps = {
-  setUser: (user: User) => void;
+  setUser: (user?: User) => void;
   user?: User;
 };
 
