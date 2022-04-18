@@ -8,6 +8,21 @@ export const Container = styled.View`
   padding: ${({theme}) => theme.spaces.x4}px;
   background-color: ${({theme}) => theme.colors.neutral._05};
 `;
+
+export const ViewGoBack = styled.TouchableOpacity`
+  width: 100%;
+  align-self: flex-end;
+  position: absolute;
+  top: 1;
+  margin: ${({theme}) => theme.spaces.x16}px 0;
+`;
+
+export const GoBack = styled.TouchableOpacity``;
+export const IconArrowRight = styled.Image.attrs({resizeMode: 'center'})`
+  width: 30px;
+  height: 30px;
+`;
+
 export const Amount = styled.View`
   justify-content: center;
   align-items: center;
@@ -23,18 +38,18 @@ export const ViewDescription = styled.View`
   padding: ${({theme}) => theme.spaces.x4}px;
   margin: ${({theme}) => theme.spaces.x4}px 0;
 `;
-export const SymbolDescription = styled.Image.attrs({resizeMode: 'contain'})`
-  width: 40px;
-  height: 40px;
-  border-radius: ${({theme}) => theme.radius.x6}px;
+export const SymbolDescription = styled.Image.attrs({resizeMode: 'center'})`
+  width: 30px;
+  height: 30px;
+  align-self: center;
 `;
-export const SymbolData = styled.Image.attrs({resizeMode: 'center'})`
-  width: 40px;
-  height: 40px;
-  border-radius: ${({theme}) => theme.radius.x6}px;
+export const SymbolData = styled.Image.attrs({resizeMode: 'cover'})`
+  width: 30px;
+  height: 30px;
+  align-self: center;
 `;
 export const DescriptionTextInput = styled.TextInput.attrs(({theme}) => {
-  return {placeholderTextColor: theme.colors.neutral._99};
+  return {placeholderTextColor: theme.colors.neutral._50};
 })`
   width: 85%;
   height: 40px;
@@ -76,7 +91,7 @@ export const DegradeButton = styled(LinearGradient).attrs(({theme}) => {
   align-items: center;
   justify-content: center;
 `;
-export const AddIcon = styled.Image`
+export const Icon = styled.Image.attrs({resizeMode: 'center'})`
   width: 30px;
   height: 30px;
 `;

@@ -80,6 +80,7 @@ const AddExpenseScreen: React.FC = () => {
 
   return (
     <AddExpenseView
+      // goBack={navigation.navigate('Home')!}
       amount={amount}
       setAmount={setAmount}
       description={description}

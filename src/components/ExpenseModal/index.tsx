@@ -7,12 +7,16 @@ import {Expense} from '../../@types/expense';
 import {useExpenseContext} from '../../hooks/expenseContext';
 import {navigate} from '../../routes/rootNavigation';
 import {deleteExpense, getExpense} from '../../Services/expensesServices';
+import {formatValue} from '../../utils/value';
 import BaseText from '../BaseText';
 import {
   Close,
   Container,
   Delete,
   Edit,
+  IconClose,
+  IconDelete,
+  IconEdit,
   Options,
   Options2,
   Symbol,
@@ -81,22 +85,22 @@ const ExpenseModal: React.FC = () => {
                 navigate('AddExpense', {expense: expenseOn});
                 modalizeRef.current?.close();
               }}>
-              <BaseText size="h3">✏️</BaseText>
+              <IconEdit source={require('../../assets/images/edit.png')} />
             </Edit>
             <Delete onPress={() => alertDeleteExpense()}>
-              <BaseText size="h3">🗑️</BaseText>
+              <IconDelete source={require('../../assets/images/delete.png')} />
             </Delete>
           </Options2>
           <Close
             onPress={() => {
               modalizeRef.current?.close();
             }}>
-            <BaseText size="h3">❌</BaseText>
+            <IconClose source={require('../../assets/images/close.png')} />
           </Close>
         </Options>
         <Symbol source={require('../../assets/images/money.png')} />
-        <BaseText size="h1">{expenseOn?.value}</BaseText>
-        <BaseText size="h3">{expenseOn?.item}</BaseText>
+        <BaseText size="h1">{formatValue(expenseOn?.value)}</BaseText>
+        <BaseText size="h4">{expenseOn?.item}</BaseText>
       </Container>
     </Modalize>
   );

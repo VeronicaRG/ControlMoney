@@ -8,7 +8,7 @@ import {theme} from '../../theme';
 import {formatDate} from '../../utils/date';
 import {
   AddExpense,
-  AddIcon,
+  Icon,
   Amount,
   Container,
   DataTextInput,
@@ -17,6 +17,10 @@ import {
   SymbolData,
   ViewData,
   ViewDescription,
+  SymbolDescription,
+  GoBack,
+  ViewGoBack,
+  IconArrowRight,
 } from './styles';
 import {AddExpenseProps} from './type';
 
@@ -32,11 +36,19 @@ const AddExpenseView: React.FC<AddExpenseProps> = ({
   cancel,
   action,
   isEditing,
+  goBack,
 }) => {
   const {t} = useTranslation();
 
   return (
     <Container>
+      <ViewGoBack onPress={goBack}>
+        <GoBack>
+          <IconArrowRight
+            source={require('../../assets/images/arrowRight.png')}
+          />
+        </GoBack>
+      </ViewGoBack>
       <BaseText size="h1" color={theme.colors.neutral._99}>
         {t('AddExpense.title')}
       </BaseText>
@@ -58,7 +70,9 @@ const AddExpenseView: React.FC<AddExpenseProps> = ({
       <View>
         {isEditing ? (
           <ViewDescription>
-            <SymbolData source={require('../../assets/images/date.png')} />
+            <SymbolDescription
+              source={require('../../assets/images/description.png')}
+            />
             <DescriptionTextInput
               value={description}
               onChangeText={setDescription}
@@ -69,7 +83,9 @@ const AddExpenseView: React.FC<AddExpenseProps> = ({
           <>
             <BaseText size="h3">{t('AddExpense.description')}</BaseText>
             <ViewDescription>
-              <SymbolData source={require('../../assets/images/date.png')} />
+              <SymbolDescription
+                source={require('../../assets/images/description.png')}
+              />
               <DescriptionTextInput
                 value={description}
                 onChangeText={setDescription}
@@ -121,9 +137,9 @@ const AddExpenseView: React.FC<AddExpenseProps> = ({
       <AddExpense onPress={action}>
         <DegradeButton>
           {isEditing ? (
-            <BaseText size="h1">✏️ </BaseText>
+            <Icon source={require('../../assets/images/edit.png')} />
           ) : (
-            <AddIcon source={require('../../assets/images/add.png')} />
+            <Icon source={require('../../assets/images/add.png')} />
           )}
         </DegradeButton>
       </AddExpense>

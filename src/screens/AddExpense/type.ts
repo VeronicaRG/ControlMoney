@@ -10,4 +10,5 @@ export interface AddExpenseProps {
   cancel: () => void;
   action: () => void;
   isEditing: boolean;
+  goBack?: () => void;
 }

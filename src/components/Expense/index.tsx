@@ -1,11 +1,11 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
 import {Expense} from '../../@types/expense';
 
 import BaseText from '../../components/BaseText';
 import {useExpenseContext} from '../../hooks/expenseContext';
 import {formatDate} from '../../utils/date';
+import {formatValue} from '../../utils/value';
 
 import {
   Amount,
@@ -21,7 +21,6 @@ const ExpenseComponent: React.FC<Expense> = props => {
   const {item, date, value} = props;
   const navigation = useNavigation();
   const {setSelectedExpense} = useExpenseContext();
-  const {t} = useTranslation();
 
   function onPressExpense() {
     setSelectedExpense(props._id!);
@@ -36,12 +35,7 @@ const ExpenseComponent: React.FC<Expense> = props => {
           <BaseText size="b4">{formatDate(new Date(date))}</BaseText>
         </InfoView>
         <Amount>
-          <BaseText size="h6">
-            {value.toLocaleString(t('Expense.CurrencyName'), {
-              style: 'currency',
-              currency: t('Expense.Currency'),
-            })}
-          </BaseText>
+          <BaseText size="h6">{formatValue(value)}</BaseText>
         </Amount>
         <LeftArrow
           onPress={() => {

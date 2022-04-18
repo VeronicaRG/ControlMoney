@@ -20,9 +20,6 @@ export const Edit = styled.TouchableOpacity`
   height: 35px;
   justify-content: center;
   align-items: center;
-
-  background-color: ${({theme}) => theme.colors.primary};
-  border-radius: ${({theme}) => theme.radius.x10}px;
   margin-right: ${({theme}) => theme.spaces.x4}px;
 `;
 
@@ -31,9 +28,6 @@ export const Delete = styled.TouchableOpacity`
   height: 35px;
   justify-content: center;
   align-items: center;
-
-  background-color: ${({theme}) => theme.colors.primary};
-  border-radius: ${({theme}) => theme.radius.x10}px;
 `;
 
 export const Close = styled.TouchableOpacity`
@@ -41,19 +35,26 @@ export const Close = styled.TouchableOpacity`
   height: 35px;
   justify-content: center;
   align-items: center;
-
-  background-color: ${({theme}) => theme.colors.primary};
-  border-radius: ${({theme}) => theme.radius.x10}px;
 `;
 
-export const Symbol = styled.Image`
-  width: 80px;
-  height: 80px;
-  justify-content: center;
-  align-items: center;
-
-  background-color: ${({theme}) => theme.colors.primary};
-  border-radius: ${({theme}) => theme.radius.x10}px;
+export const Symbol = styled.Image.attrs({resizeMode: 'contain'})`
+  width: 70px;
+  height: 70px;
+`;
+export const IconEdit = styled.Image.attrs({resizeMode: 'contain'})`
+  width: 25px;
+  height: 25px;
+  margin-right: ${({theme}) => theme.spaces.x4}px;
+`;
+export const IconDelete = styled.Image.attrs({resizeMode: 'contain'})`
+  width: 25px;
+  height: 25px;
+  margin-right: ${({theme}) => theme.spaces.x4}px;
+`;
+export const IconClose = styled.Image.attrs({resizeMode: 'contain'})`
+  width: 35px;
+  height: 35px;
+  margin-right: ${({theme}) => theme.spaces.x4}px;
 `;
 export const Amount = styled.View`
   justify-content: space-between;
