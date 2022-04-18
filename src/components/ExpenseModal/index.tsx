@@ -23,20 +23,28 @@ const ExpenseModal: React.FC = () => {
   const modalizeRef = useRef<Modalize>(null);
   const {selectedExpense, setSelectedExpense} = useExpenseContext();
   const {t} = useTranslation();
-  const {setExpenses} = useExpenseContext();
+  const {expenses, setExpenses} = useExpenseContext();
 
   const onOpen = () => {
     modalizeRef.current?.open();
   };
   async function showExpense() {
-    const expense = await getExpense(selectedExpense!);
-    setExpenseOn(expense);
+    try {
+      const expense = await getExpense(selectedExpense!);
+      setExpenseOn(expense);
+    } catch (e) {
+      Alert.alert('Error', t('General.error'));
+    }
   }
 
   async function deleteOnExpense() {
-    await deleteExpense(selectedExpense!);
-    setExpenses(actual => actual.filter(item => item._id !== selectedExpense));
-    modalizeRef.current?.close();
+    try {
+      await deleteExpense(selectedExpense!);
+      setExpenses(expenses.filter(item => item._id !== selectedExpense));
+      modalizeRef.current?.close();
+    } catch (e) {
+      Alert.alert('Error', t('General.error'));
+    }
   }
 
   const alertDeleteExpense = () =>
