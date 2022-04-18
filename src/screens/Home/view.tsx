@@ -11,7 +11,7 @@ import {theme} from '../../theme';
 
 import {
   AddExpense,
-  AddIcon,
+  Icon,
   Container,
   DegradeButton,
   GreetingView,
@@ -61,7 +61,7 @@ const HomeView: React.FC<HomeProps> = ({expenses, onEndReached}) => {
           navigation.navigate('AddExpense');
         }}>
         <DegradeButton>
-          <AddIcon source={require('../../assets/images/add.png')} />
+          <Icon source={require('../../assets/images/add.png')} />
         </DegradeButton>
       </AddExpense>
     </Container>

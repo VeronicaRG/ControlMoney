@@ -61,7 +61,7 @@ export const DegradeButton = styled(LinearGradient).attrs(({theme}) => {
   align-items: center;
   justify-content: center;
 `;
-export const AddIcon = styled.Image`
+export const Icon = styled.Image`
   width: 30px;
   height: 30px;
 `;
