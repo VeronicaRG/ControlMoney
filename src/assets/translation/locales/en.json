@@ -1,10 +1,11 @@
 {
   "translation": {
     "slogan": "Control your money, so the money doesn't control you",
-    "button": "Sign up",
+    "button": "Sign in",
     "Home": {
-      "greeting": "Welcome {{nickname}}",
-      "Button": "Add expense"
+      "greeting": "Welcome",
+      "Button": "Add expense",
+      "expenses": "Expenses"
     },
     "AddExpense": {
       "title": "Expense",
@@ -18,6 +19,15 @@
       "AlertMessage": "Are you sure that you want to delete this expense?",
       "AlertCancel": "Cancel",
       "AlertYes": "Yes"
+    },
+    "Language": "🇺🇸",
+    "Login": {
+      "email": "Enter your email",
+      "nickname": "Enter your nickname"
+    },
+    "Expense": {
+      "Currency": "USD",
+      "CurrencyName": "en-US"
     }
   }
 }

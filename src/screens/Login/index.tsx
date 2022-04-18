@@ -26,7 +26,7 @@ const LoginScreen: React.FC = () => {
     if (user?.token) {
       navigation.reset({
         index: 0,
-        routes: [{name: 'Logged'}],
+        routes: [{name: 'Home'}],
       });
     }
   }, [user, navigation]);

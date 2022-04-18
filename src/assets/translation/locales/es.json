@@ -4,7 +4,8 @@
     "button": "Inscribirse",
     "Home": {
       "greeting": "Bienvenido",
-      "Button": "Adicionar gasto"
+      "Button": "Adicionar gasto",
+      "expenses": "Gastos"
     },
     "AddExpense": {
       "title": "Gasto",
@@ -18,6 +19,15 @@
       "AlertMessage": "¿Está seguro de que quiere eliminar este gasto?",
       "AlertCancel": "Cancelar",
       "AlertYes": "Si"
+    },
+    "Language": "🇨🇴",
+    "Login": {
+      "email": "Digite su email",
+      "nickname": "Digite su sobrenombre"
+    },
+    "Expense": {
+      "Currency": "COP",
+      "CurrencyName": "es-COL"
     }
   }
 }

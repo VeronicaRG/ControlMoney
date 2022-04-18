@@ -1,23 +1,18 @@
 {
   "translation": {
-    "slogan": "Controle seu dinheiro para que o dinheiro não o controle você",
-    "button": "Cadastre-se",
+    "Language": "🇧🇷",
+    "Login": {
+      "email": "Digite seu email",
+      "nickname": "Digite seu apelido"
+    },
+    "button": "Inscrevase",
     "Home": {
-      "greeting": "Bem vindo {{nickname}}",
-      "Button": "Adicionar despensa "
+      "greeting": "Benvindo",
+      "expenses": "Despesas"
     },
-    "AddExpense": {
-      "title": "Despensa",
-      "description": "Descrição",
-      "data": "Data",
-      "descriptionInput": "Adicione a descripção da despesa",
-      "dataInput": "Hoje"
-    },
-    "ExpenseModal": {
-      "Alert": "Alerta",
-      "AlertMessage": "Tem certeza de que quer deletar esta despesa?",
-      "AlertCancel": "Cancelar",
-      "AlertYes": "Sim"
+    "Expense": {
+      "Currency": "BRL",
+      "CurrencyName": "pt-BR"
     }
   }
 }

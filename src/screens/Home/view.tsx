@@ -9,7 +9,17 @@ import Expense from '../../components/Expense';
 import {useUserContext} from '../../hooks/auth';
 import {theme} from '../../theme';
 
-import {AddExpense, Container, View} from './styles';
+import {
+  AddExpense,
+  AddIcon,
+  Container,
+  DegradeButton,
+  GreetingView,
+  SettingIcon,
+  Settings,
+  User,
+  View,
+} from './styles';
 import {HomeProps} from './type';
 
 const HomeView: React.FC<HomeProps> = ({expenses}) => {
@@ -21,24 +31,37 @@ const HomeView: React.FC<HomeProps> = ({expenses}) => {
   return (
     <Container safeArea={insets}>
       <View>
-        <BaseText size="h3">
-          {t('Home.greeting', {nickname: user?.nickname})}
-        </BaseText>
-        <AddExpense
+        <User source={require('../../assets/images/user.png')} />
+        <GreetingView>
+          <BaseText size="h3">{t('Home.greeting')}</BaseText>
+          <BaseText size="b4">{user?.nickname}</BaseText>
+        </GreetingView>
+        <Settings
           onPress={() => {
-            navigation.navigate('AddExpense');
+            navigation.navigate('Settings');
           }}>
-          <BaseText size="h1" color={theme.colors.neutral._00}>
-            +
-          </BaseText>
-        </AddExpense>
+          <SettingIcon source={require('../../assets/images/settings.png')} />
+        </Settings>
       </View>
+      <BaseText
+        style={{margin: theme.spaces.x1, marginLeft: theme.spaces.x5}}
+        size="h5">
+        {t('Home.expenses')}
+      </BaseText>
 
       <FlatList
         data={expenses}
         keyExtractor={item => item._id!}
         renderItem={({item}) => <Expense key={item._id!} {...item} />}
       />
+      <AddExpense
+        onPress={() => {
+          navigation.navigate('AddExpense');
+        }}>
+        <DegradeButton>
+          <AddIcon source={require('../../assets/images/add.png')} />
+        </DegradeButton>
+      </AddExpense>
     </Container>
   );
 };

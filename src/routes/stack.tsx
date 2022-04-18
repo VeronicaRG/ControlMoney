@@ -3,11 +3,12 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 
-import TabNavigator from './tab';
 import LoginScreen from '../screens/Login';
 import {Expense} from '../@types/expense';
 import AddExpenseScreen from '../screens/AddExpense';
 import {navigationRef} from './rootNavigation';
+import HomeScreen from '../screens/Home';
+import SettingScreen from '../screens/Settings';
 
 type AddExpenseProps = {
   expense: Expense;
@@ -16,7 +17,7 @@ type AddExpenseProps = {
 export type RootStackParamList = {
   Home: undefined;
   Login: undefined;
-  Logged: undefined;
+  Settings: undefined;
   AddExpense: AddExpenseProps | undefined;
 };
 
@@ -32,13 +33,18 @@ const StackNavigator: React.FC = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Logged"
-          component={TabNavigator}
+          name="Home"
+          component={HomeScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
           name="AddExpense"
           component={AddExpenseScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={SettingScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

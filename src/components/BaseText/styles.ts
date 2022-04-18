@@ -24,5 +24,5 @@ const fontStyles: {[index: string]: {size: number; font: string}} = {
 export const StyledText = styled(Text)<BaseTextProps>`
   font-size: ${({size}) => fontStyles[size].size}px;
   font-family: ${({size}) => fontStyles[size].font};
-  color: ${({color}) => color || theme.colors.neutral._99};
+  color: ${({color}) => color || theme.colors.neutral._80};
 `;
