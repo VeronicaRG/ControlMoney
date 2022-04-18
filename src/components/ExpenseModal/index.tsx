@@ -86,9 +86,7 @@ const ExpenseModal: React.FC = () => {
             <BaseText size="h3">❌</BaseText>
           </Close>
         </Options>
-        <Symbol>
-          <BaseText size="h1">💵</BaseText>
-        </Symbol>
+        <Symbol source={require('../../assets/images/money.png')} />
         <BaseText size="h1">{expenseOn?.value}</BaseText>
         <BaseText size="h3">{expenseOn?.item}</BaseText>
       </Container>

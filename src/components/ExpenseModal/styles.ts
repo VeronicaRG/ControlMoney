@@ -46,7 +46,7 @@ export const Close = styled.TouchableOpacity`
   border-radius: ${({theme}) => theme.radius.x10}px;
 `;
 
-export const Symbol = styled.View`
+export const Symbol = styled.Image`
   width: 80px;
   height: 80px;
   justify-content: center;

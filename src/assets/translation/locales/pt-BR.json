@@ -8,11 +8,26 @@
     "button": "Inscrevase",
     "Home": {
       "greeting": "Benvindo",
-      "expenses": "Despesas"
+      "expenses": "Despesas",
+      "Button": "Adicionar despesa"
     },
     "Expense": {
       "Currency": "BRL",
       "CurrencyName": "pt-BR"
-    }
+    },
+    "AddExpense": {
+      "title": "Despesa",
+      "description": "Descrição",
+      "data": "Data",
+      "dataInput": "Hoje",
+      "descriptionInput": "Adicione a descrição da despesa"
+    },
+    "ExpenseModal": {
+      "Alert": "Alerta",
+      "AlertCancel": "Cancelar",
+      "AlertMessage": "Tem certeza de que quer eliminar esta despesa?",
+      "AlertYes": "Sim"
+    },
+    "slogan": "Controle sue dinheiro para que o dinheiro não controle você"
   }
 }

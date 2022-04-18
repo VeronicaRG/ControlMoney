@@ -8,11 +8,13 @@ import {theme} from '../../theme';
 import {formatDate} from '../../utils/date';
 import {
   AddExpense,
+  AddIcon,
   Amount,
   Container,
   DataTextInput,
+  DegradeButton,
   DescriptionTextInput,
-  Symbol,
+  SymbolData,
   ViewData,
   ViewDescription,
 } from './styles';
@@ -54,35 +56,76 @@ const AddExpenseView: React.FC<AddExpenseProps> = ({
         />
       </Amount>
       <View>
-        <BaseText size="h3">{t('AddExpense.description')}</BaseText>
-        <ViewDescription>
-          <Symbol />
-          <DescriptionTextInput
-            value={description}
-            onChangeText={setDescription}
-            placeholder={t('AddExpense.descriptionInput')}
-          />
-        </ViewDescription>
+        {isEditing ? (
+          <ViewDescription>
+            <SymbolData source={require('../../assets/images/date.png')} />
+            <DescriptionTextInput
+              value={description}
+              onChangeText={setDescription}
+              placeholder={t('AddExpense.descriptionInput')}
+            />
+          </ViewDescription>
+        ) : (
+          <>
+            <BaseText size="h3">{t('AddExpense.description')}</BaseText>
+            <ViewDescription>
+              <SymbolData source={require('../../assets/images/date.png')} />
+              <DescriptionTextInput
+                value={description}
+                onChangeText={setDescription}
+                placeholder={t('AddExpense.descriptionInput')}
+              />
+            </ViewDescription>
+          </>
+        )}
       </View>
       <View>
-        <BaseText size="h3">{t('AddExpense.data')}</BaseText>
-        <ViewData onPress={onPressViewData}>
-          <Symbol />
-          <DataTextInput>
-            <BaseText size="h5">{formatDate(date)}</BaseText>
-          </DataTextInput>
-        </ViewData>
-        <DatePicker
-          modal
-          mode="date"
-          open={openModal}
-          date={date}
-          onConfirm={confirm}
-          onCancel={cancel}
-        />
+        {isEditing ? (
+          <>
+            <ViewData onPress={onPressViewData}>
+              <SymbolData source={require('../../assets/images/date.png')} />
+              <DataTextInput>
+                <BaseText size="h5">{formatDate(date)}</BaseText>
+              </DataTextInput>
+            </ViewData>
+            <DatePicker
+              modal
+              mode="date"
+              open={openModal}
+              date={date}
+              onConfirm={confirm}
+              onCancel={cancel}
+            />
+          </>
+        ) : (
+          <>
+            <BaseText size="h3">{t('AddExpense.data')}</BaseText>
+            <ViewData onPress={onPressViewData}>
+              <SymbolData source={require('../../assets/images/date.png')} />
+              <DataTextInput>
+                <BaseText size="h5">{formatDate(date)}</BaseText>
+              </DataTextInput>
+            </ViewData>
+            <DatePicker
+              modal
+              mode="date"
+              open={openModal}
+              date={date}
+              onConfirm={confirm}
+              onCancel={cancel}
+            />
+          </>
+        )}
       </View>
+      <AddExpense />
       <AddExpense onPress={action}>
-        <BaseText size="h1">{isEditing ? '✏️' : '+'}</BaseText>
+        <DegradeButton>
+          {isEditing ? (
+            <BaseText size="h1">✏️ </BaseText>
+          ) : (
+            <AddIcon source={require('../../assets/images/add.png')} />
+          )}
+        </DegradeButton>
       </AddExpense>
     </Container>
   );
